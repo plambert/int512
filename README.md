@@ -84,12 +84,10 @@ int int512_compare(const int512_t *a, const int512_t *b);
 ## Building
 
 ```bash
-make          # Build test executable (auto-downloads ctest.h if needed)
+make          # Build test executable
 make test     # Build and run tests
 make clean    # Clean build artifacts
 ```
-
-The Makefile automatically downloads `ctest.h` from GitHub if it doesn't exist.
 
 ## Testing
 
