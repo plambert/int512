@@ -17,7 +17,11 @@ TEST_EXECUTABLE = .bin/test_int512
 
 all: $(TEST_EXECUTABLE)
 
+ctest.h:
+	curl -L -f -o ctest.h https://github.com/bvdberg/ctest/raw/refs/heads/master/ctest.h
+
 $(TEST_EXECUTABLE): $(LIB_OBJECTS) $(TEST_OBJECTS)
+	@mkdir -p .bin
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 %.o: %.c int512.h ctest.h
