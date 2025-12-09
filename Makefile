@@ -24,11 +24,14 @@ $(TEST_EXECUTABLE): $(LIB_OBJECTS) $(TEST_OBJECTS)
 	@mkdir -p .bin
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-%.o: %.c int512.h ctest.h
+%.o: %.c int512.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-test: $(TEST_EXECUTABLE)
+test: ctest.h $(TEST_EXECUTABLE)
 	./$(TEST_EXECUTABLE)
 
 clean:
 	rm -f $(LIB_OBJECTS) $(TEST_OBJECTS) $(TEST_EXECUTABLE)
+
+dist-clean: clean
+	rm -f ctest.h
